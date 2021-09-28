@@ -1,0 +1,60 @@
+<h1>予約フォーム</h1>
+
+<nav class="reservation-nav">
+	<li class="other">1. 入力</li>
+	<li>→</li>
+	<li class="current">2. 確認</li>
+	<li>→</li>
+	<li class="other">3. 完了</li>
+</nav>
+
+<table>
+  <tr>
+    <th>ルーム画像</th>
+    <td><%= image_tag @post.image_url, width: 400 %></td>
+  </tr>
+  <tr>
+    <th>ルーム名</th>
+    <td><%= @post.roomname %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @post.price %>円</td>
+  </tr>
+</table>
+<table>
+  <tr>
+    <th>チェックイン</th>
+    <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
+  <tr>
+  <tr>
+    <th>チェックアウト</th>
+    <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.ppl %>人</td>
+  </tr>
+</table>
+
+<%= form_with model: @reservation, method: :post, url: '/reservations/back' do |form| %>
+  <%= form.hidden_field :start_date %>
+  <%= form.hidden_field :finish_date %>
+  <%= form.hidden_field :ppl %>
+	<div>
+    <ul>
+      <%= form.submit '入力画面に戻る' %>
+		</ul>
+	</div>
+<% end %>
+
+<%= form_with model: @reservation, method: :post, url: '/reservations/complete' do |form| %>
+  <%= form.hidden_field :start_date %>
+	<%= form.hidden_field :finish_date %>
+	<%= form.hidden_field :ppl %>
+	<div>
+    <ul>
+      <%= form.submit '予約を確定する' %>
+		</ul>
+	</div>
+<% end %>

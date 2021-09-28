@@ -1,0 +1,16 @@
+<header>
+  <div class="header-bar">
+    <div class="logo">
+      <a href="/top">poteshare</a>
+    </div>
+    <nav class="header-nav">
+      <ul>
+        <li><%= link_to "ルーム登録", '/posts/new' %></li>
+        <li><%= link_to "登録ルーム一覧", '/posts' %></li>
+        <li><%= link_to "予約一覧", '/top' %></li>
+        <li><%= link_to "プロフィール", current_user %></li>
+        <li><%= link_to "ログアウト", '/logout' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,28 @@
+<h1>ルーム詳細</h1>
+
+<table>
+  <tr>
+    <th>ルーム画像</th>
+    <td><%= image_tag @post.image_url, width: 400 %></td>
+  </tr>
+  <tr>
+    <th>ルーム名</th>
+    <td><%= @post.roomname %></td>
+  </tr>
+  <tr>
+    <th>ルーム紹介</th>
+    <td><%= @post.introduction %></td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @post.address %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @post.price %>円</td>
+  </tr>
+  <tr>
+    <th>ルーム登録日</th>
+    <td><%= @post.created_at.to_s(:datetime_jp) %></td>
+  </tr>
+</table>

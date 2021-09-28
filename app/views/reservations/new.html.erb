@@ -1,0 +1,31 @@
+<h1>予約フォーム</h1>
+
+<nav class="reservation-nav">
+	<li class="current">1. 入力</li>
+	<li>→</li>
+	<li class="other">2. 確認</li>
+	<li>→</li>
+	<li class="other">3. 完了</li>
+</nav>
+
+<%= form_with model: @reservation, method: :post, url: reservations_confirm_path do |form| %>
+	<table>
+    <tr>
+      <th>チェックイン</th>
+      <td><%= form.date_select :start_date, class: 'form-control' %></td>
+		</tr>
+		<tr>
+      <th>チェックアウト</th>
+      <td><%= form.date_select :finish_date, class: 'form-control' %></td>
+		</tr>
+		<tr>
+      <th>人数</th>
+      <td><%= form.text_field :ppl %></td>
+		</tr>
+	</table>
+	<div>
+    <ul>
+      <%= form.submit '確認画面へ' %>
+		</ul>
+	</div>
+<% end %>

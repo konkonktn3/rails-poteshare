@@ -1,0 +1,23 @@
+<div>
+  <div class="login-container">
+    <h2>ログイン</h2>
+    <p>登録情報を入力してください。</p>
+
+    <%= form_with scope: :session, url: login_path, local: true do |f| %>
+      <div class="box">
+        <tr>
+          <%= f.label :email %><br>
+          <%= f.email_field :email %>
+        </tr><br>
+        <tr>
+          <%= f.label :password %><br>
+          <%= f.password_field :password %>
+        </tr>
+        <div class="button">
+          <%= f.submit "ログイン" %><br>
+          <%= link_to "アカウントをお持ちでない方", '/users/new' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

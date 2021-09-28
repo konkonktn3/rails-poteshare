@@ -1,0 +1,26 @@
+<h1>ルーム一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>ルーム画像</th>
+      <th>ルーム名</th>
+      <th>ルーム詳細</th>
+      <th>値段（１泊）</th>
+      <th>予約</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td><%= image_tag post.image.to_s, width: 180 %></td>
+      <td><%= post.roomname %></td>
+      <td><%= link_to "more..", post %></td>
+      <td><%= post.price %>円</td>
+      <td><%= link_to "予約", '/reservations/new' %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
