@@ -1,12 +1,14 @@
 <h1>アカウント編集</h1>
 
+<%= render "shared/error", obj: @user %>
+
 <%= form_with model: @user do |f| %>
   <table>
     <div>
       <% if @user.image? %>
-        <%= image_tag @user.image.thumb.url %>
+        <%= image_tag @user.image.thumb.url, size: '150x150' %>
       <% else %>
-        <%= image_tag "/assets/initialimage.jpg", :size => '100x100' %>
+        <%= image_tag "/assets/initialimage.jpg", size: '150x150' %>
       <% end %>
     </div>
     <tr>

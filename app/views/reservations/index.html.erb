@@ -5,7 +5,6 @@
     <tr>
     　<th>ルーム画像</th>
       <th>ルーム名</th>
-      <th>合計料金</th>
       <th>チェックイン</th>
       <th>チェックアウト</th>
       <th>予約確定日</th>
@@ -13,20 +12,17 @@
   </thead>
 
   <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.image %></td>
-        <td><%= post.roomname %></td>
-        <td><%= reservation.price %></td>
+    <% @post.each do |post| %>
+      <td><%= post.roomname %></td>
+      <td><%= image_tag post.image.to_s, width: 180 %></td>
     <% end %>
-  </tbody>
-  <tbody>
-    <% @reservations.each do |reservation| %>
-      <tr>
+    <% @reservation.each do |reservation| %>
+      <th>
+      <%= reservation.post_roomname %>
         <td><%= reservation.start_date %></td>
         <td><%= reservation.finish_date %></td>
         <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
-      </tr>
+      </th>
     <% end %>
   </tbody>
 </table>

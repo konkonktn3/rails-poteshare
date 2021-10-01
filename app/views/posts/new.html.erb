@@ -1,25 +1,27 @@
-<h1>ルーム登録</h1>
 
-<%= form_with model: @post, local: true do |f| %>
+<h1>ルーム登録</h1>
+<%= render "shared/error", obj: @post %>
+
+  <%= form_with model: @post, local: true do |f| %>
   <table>
     <tr>
       <th><%= f.label :roomname ,"部屋の名前" %></th>
-      <td><%= f.text_field :roomname %></td>
+      <td><%= f.text_field :roomname, size: "31x10" %></td>
     </tr>
 
     <tr>
       <th><%= f.label :introduction ,"部屋の紹介" %></th>
-      <td><%= f.text_area :introduction %></td>
+      <td><%= f.text_area :introduction, size: "30x10" %></td>
     </tr>
 
     <tr>
       <th><%= f.label :price ,"料金（１泊）" %></th>
-      <td><%= f.text_field :price %></td>
+      <td><%= f.text_field :price, size: "31x10" %></td>
     </tr>
 
     <tr>
       <th><%= f.label :address ,"住所" %></th>
-      <td><%= f.text_field :address %></td>
+      <td><%= f.text_field :address, size: "31x10" %></td>
     </tr>
 
     <tr>
@@ -27,10 +29,9 @@
       <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
     </tr>
   </table>
-
-  <div>
-    <ul>
-      <li><%= f.submit "登録する"%></li>
-    </ul>
+  <div class="buttom">
+    <%= f.submit "登録する"%>
   </div>
-<% end %>
+  
+  <% end %>
+</body>

@@ -5,13 +5,13 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
 
   get '/top' => 'homes#top'
-
-  get '/reservations' => 'reservations#index'
-  get 'reservations/new'
-  post 'reservations/confirm'
-  post 'reservations/back'
-  post 'reservations/complete'
   
+  get 'posts/search'
+
   resources :users
-  resources :posts
+  resources :posts do
+    resources :reservations
+    post 'reservations/confirm'
+    post 'reservations/back'
+  end
 end

@@ -10,26 +10,20 @@
 
 <table>
   <tr>
-    <th>ルーム画像</th>
-    <td><%= image_tag @post.image_url, width: 400 %></td>
-  </tr>
-  <tr>
     <th>ルーム名</th>
-    <td><%= @post.roomname %></td>
+    <td><%= @reservation.post.roomname %></td>
   </tr>
   <tr>
-    <th>料金</th>
-    <td><%= @post.price %>円</td>
+    <th>ルーム画像</th>
+    <td><%= @reservation.post.image_url, width: 100×200 %></td>
   </tr>
-</table>
-<table>
   <tr>
     <th>チェックイン</th>
-    <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
-  <tr>
+    <td><%= @reservation.start_date %></td>
+  </tr>
   <tr>
     <th>チェックアウト</th>
-    <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
+    <td><%= @reservation.finish_date %></td>
   </tr>
   <tr>
     <th>人数</th>
@@ -37,24 +31,26 @@
   </tr>
 </table>
 
-<%= form_with model: @reservation, method: :post, url: '/reservations/back' do |form| %>
-  <%= form.hidden_field :start_date %>
-  <%= form.hidden_field :finish_date %>
-  <%= form.hidden_field :ppl %>
-	<div>
-    <ul>
-      <%= form.submit '入力画面に戻る' %>
-		</ul>
-	</div>
-<% end %>
-
-<%= form_with model: @reservation, method: :post, url: '/reservations/complete' do |form| %>
-  <%= form.hidden_field :start_date %>
+# 戻った時も入力が残るように
+<%= form_with model: @reservation, method: :post, url: post_reservations_back_path do |form| %>
+	<%= form.hidden_field :start_date %>
 	<%= form.hidden_field :finish_date %>
 	<%= form.hidden_field :ppl %>
-	<div>
+  <div>
+    <ul>
+      <%= form.submit '入力画面に戻る' %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: @reservation, method: :post, url: "/posts/#{@post.id}/resevations" do |form| %>
+	<%= form.hidden_field :start_date %>
+	<%= form.hidden_field :finish_date %>
+	<%= form.hidden_field :ppl %>
+  <div>
     <ul>
       <%= form.submit '予約を確定する' %>
-		</ul>
-	</div>
+    </ul>
+  </div>
 <% end %>
+  

@@ -1,9 +1,10 @@
+
 <h1>ルーム詳細</h1>
 
 <table>
   <tr>
     <th>ルーム画像</th>
-    <td><%= image_tag @post.image_url, width: 400 %></td>
+    <td><%= image_tag @post.image_url, size: '300x200' %></td>
   </tr>
   <tr>
     <th>ルーム名</th>
@@ -25,4 +26,10 @@
     <th>ルーム登録日</th>
     <td><%= @post.created_at.to_s(:datetime_jp) %></td>
   </tr>
+  <tr>
+    <th>予約</th>
+    <td><%= link_to "こちらから", "/posts/#{@post.id}/reservations/new" %></td>
+  </tr>
 </table>
+
+

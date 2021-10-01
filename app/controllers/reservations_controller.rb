@@ -1,35 +1,41 @@
 class ReservationsController < ApplicationController
-
-  before_action :permit_params, except: :new
+  before_action :logged_in_user
+	before_action :permit_params
 
 	def index
-		@reservations = Reservation.all
+		@reservations = current_user.current_post.reservations
 	end
 
 	def new
 		@reservation = Reservation.new
 	end
 
-	def back
-		@reservation = Reservation.new(permit_params)
+  def back
+		@reservation = current_post.reservations.new(@attr)
 		render :new
 	end
 
 	def confirm
-		@reservation = Reservation.new(permit_params)
-		if @reservation.invalid?
+		@reservation = current_post.reservations.new(@attr)
+		@reservation.post_id =params[:post_id]
+		if @reservation.save
+		else
 			render :new
 		end
 	end
+	
+	def create
+		@reservation = current_post.reservations.create(@attr)
+	end
 
-	def complete
-		Reservation.create!(permit_params)
+	def show
+		@reservation = current_user.current_post.reservations.find(params[:id])
 	end
 
 	private
 
 	def permit_params
-		params.permit(:start_date, :finish_date, :ppl, :post_id)
+		@attr = params.require('reservation').permit(:start_date, :finish_date, :ppl).merge(user_id: current_user.id, post_id: current_post.id)
 	end
 
 end

@@ -3,3 +3,4 @@ class AddRememberTokenToUsers < ActiveRecord::Migration[6.1]
     add_column :users, :remember_token, :string
   end
 end
+ions

@@ -1,0 +1,40 @@
+<h1>予約フォーム</h1>
+
+<nav class="reservation-nav">
+	<li class="other">1. 入力</li>
+  <li>→</li>
+	<li class="other">2. 確認</li>
+  <li>→</li>
+	<li class="current">3. 完了</li>
+</nav>
+
+<p>ご予約が確定しました。</p>
+
+<h1>予約詳細</h1>
+<table>
+  <tr>
+    <th>ルーム画像</th>
+    <td><%= image_tag @post.image_url, width: 400 %></td>
+  </tr>
+  <tr>
+    <th>ルーム名</th>
+    <td><%= @post.roomname %></td>
+  </tr>
+  <tr>
+    <th>チェックイン</th>
+    <td><%= @post.introduction %></td>
+  </tr>
+  <tr>
+    <th>チェクアウト</th>
+    <td><%= @reservation.start_date %></td>
+  </tr>
+	<tr>
+    <th>人数</th>
+    <td><%= @reservation.ppl %>円</td>
+  </tr>
+  <tr>
+    <th>合計料金</th>
+    <td><%= @post.price %>円</td>
+  </tr>
+	
+</table>

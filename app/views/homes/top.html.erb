@@ -2,9 +2,18 @@
   <div class="top">
     <div class="container-top">
       <div class="search-box">
-        <h1>まだ体験したことのない旅をしよう</h1>
-        <p>キーワード検索</p>
-        
+        <h2>まだ体験したことのない旅をしよう</h2>
+        <%= search_form_for @q, url: '/posts/search' do |f| %>
+          <div class="area">
+            <%= f.label :address, "エリア" %>
+            <%= f.search_field :address_cont %></br>
+          </div>
+          <div class="freeword">
+            <%= f.label :roomname_or_introduction_or_price_or_address_gt, "フリーワード" %>
+            <%= f.search_field :roomname_or_introduction_or_price_or_address_cont %></br>
+          </div>
+          <div class="btn"><%= f.submit '検索' %></div>
+        <% end %>
         </p>
       </div>
     </div>
@@ -13,25 +22,25 @@
       <h1>おすすめエリア</h1>
       <div class="item-box">
         <span>Tokyo</span>
-        <a href="">
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E6%9D%B1%E4%BA%AC&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
         <img src="/assets/img_tokyo.jpg", class="panel-image">
         </a>
       </div>
       <div class="item-box">
         <span>Osaka</span>
-        <a href="">
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E5%A4%A7%E9%98%AA&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
         <img src="/assets/img_osaka.jpg", class="panel-image">
         </a>
       </div>
       <div class="item-box">
         <span>Kyoto</span>
-        <a href="">
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E4%BA%AC%E9%83%BD%E5%BA%9C&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
         <img src="/assets/img_kyoto.jpg", class="panel-image">
         </a>
       </div>
       <div class="item-box">
         <span>Sapporo</span>
-        <a href="">
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E6%9C%AD%E5%B9%8C&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
         <img src="/assets/img_sapporo.jpg", class="panel-image">
         </a>
       </div>
