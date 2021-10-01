@@ -1,22 +1,6 @@
 <h1>予約フォーム</h1>
 
-<nav class="reservation-nav">
-	<li class="other">1. 入力</li>
-	<li>→</li>
-	<li class="current">2. 確認</li>
-	<li>→</li>
-	<li class="other">3. 完了</li>
-</nav>
-
 <table>
-  <tr>
-    <th>ルーム名</th>
-    <td><%= @reservation.post.roomname %></td>
-  </tr>
-  <tr>
-    <th>ルーム画像</th>
-    <td><%= @reservation.post.image_url, width: 100×200 %></td>
-  </tr>
   <tr>
     <th>チェックイン</th>
     <td><%= @reservation.start_date %></td>
@@ -31,8 +15,8 @@
   </tr>
 </table>
 
-# 戻った時も入力が残るように
-<%= form_with model: @reservation, method: :post, url: post_reservations_back_path do |form| %>
+
+<%= form_with model: @reservation, method: :post, url: reservations_back_path do |form| %>
 	<%= form.hidden_field :start_date %>
 	<%= form.hidden_field :finish_date %>
 	<%= form.hidden_field :ppl %>
@@ -43,7 +27,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @reservation, method: :post, url: "/posts/#{@post.id}/resevations" do |form| %>
+<%= form_with model: @reservation, method: :post, url: reservations_complete_path do |form| %>
 	<%= form.hidden_field :start_date %>
 	<%= form.hidden_field :finish_date %>
 	<%= form.hidden_field :ppl %>

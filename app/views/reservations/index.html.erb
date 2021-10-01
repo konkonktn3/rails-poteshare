@@ -1,5 +1,9 @@
 <h1>予約一覧</h1>
 
+<% if flash[:notice] %>
+  <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -8,21 +12,21 @@
       <th>チェックイン</th>
       <th>チェックアウト</th>
       <th>予約確定日</th>
+      <th>詳細</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @post.each do |post| %>
+    <% @posts.each do |post| %>
       <td><%= post.roomname %></td>
       <td><%= image_tag post.image.to_s, width: 180 %></td>
     <% end %>
-    <% @reservation.each do |reservation| %>
-      <th>
+    <% @reservations.each do |reservation| %>
       <%= reservation.post_roomname %>
         <td><%= reservation.start_date %></td>
         <td><%= reservation.finish_date %></td>
         <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
-      </th>
+        <td><%= link_to "more..", reservation %></td>
     <% end %>
   </tbody>
 </table>

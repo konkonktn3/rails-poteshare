@@ -7,11 +7,12 @@ Rails.application.routes.draw do
   get '/top' => 'homes#top'
   
   get 'posts/search'
+  post 'reservations/confirm' 
+  post 'reservations/back'
+  post 'reservations/complete'
 
   resources :users
   resources :posts do
     resources :reservations
-    post 'reservations/confirm'
-    post 'reservations/back'
   end
 end
