@@ -1,16 +1,17 @@
 
 <h1>ルーム登録</h1>
+<p>全て登録に必須の情報です。</p>
 <%= render "shared/error", obj: @post %>
 
   <%= form_with model: @post, local: true do |f| %>
   <table>
     <tr>
-      <th><%= f.label :roomname ,"部屋の名前" %></th>
+      <th><%= f.label :roomname ,"ルーム名" %></th>
       <td><%= f.text_field :roomname, size: "31x10" %></td>
     </tr>
 
     <tr>
-      <th><%= f.label :introduction ,"部屋の紹介" %></th>
+      <th><%= f.label :introduction ,"ルーム紹介" %></th>
       <td><%= f.text_area :introduction, size: "30x10" %></td>
     </tr>
 
@@ -28,10 +29,10 @@
       <th><%= f.label :image, 'ルーム画像' %></th>
       <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
     </tr>
-  </table>
-  <div class="buttom">
-    <%= f.submit "登録する"%>
-  </div>
-  
+  </table>  
+    <tr>
+      <%= f.submit "登録する"%>
+    </tr>
+    
   <% end %>
 </body>

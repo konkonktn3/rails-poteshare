@@ -1,0 +1,32 @@
+<h1>ルーム情報の編集</h1>
+
+    <%= form_with model: @post do |f| %>
+      <table>
+        <tr>
+          <th><%= f.label :roomname ,"ルーム名" %></th>
+          <td><%= f.text_field :roomname, size: "31x10" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :introduction ,"ルーム紹介" %></th>
+          <td><%= f.text_area :introduction, size: "30x10" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :price ,"料金（１泊）" %></th>
+          <td><%= f.text_field :price, size: "31x10" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :address ,"住所" %></th>
+          <td><%= f.text_field :address, size: "31x10" %></td>
+        </tr>
+        <tr>
+          <th><%= f.label :image, 'ルーム画像' %></th>
+          <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
+        </tr>
+      </table>
+      <div>
+        <ul>
+          <li><%= f.submit "編集を完了する" %></li>
+          <li><%= link_to "登録ルーム一覧に戻る", :post %></li>
+        </ul>
+      </div>
+    <% end %>

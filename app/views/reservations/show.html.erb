@@ -1,28 +1,38 @@
 <h1>予約詳細</h1>
+
 <table>
   <tr>
-    <th>ルーム画像</th>
-    <td><%= image_tag @post.image_url, width: 400 %></td>
-  </tr>
-  <tr>
-    <th>ルーム名</th>
-    <td><%= @post.roomname %></td>
+    <th>ルーム名/ルーム画像</th>
+  <td><%= link_to @post.roomname , "/posts/#{@post.id}" %><br>
+  <%= image_tag @post.image.to_s, width: 250 %></td>
   </tr>
   <tr>
     <th>チェックイン</th>
-    <td><%= @post.introduction %></td>
+    <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
   </tr>
   <tr>
     <th>チェクアウト</th>
-    <td><%= @reservation.start_date %></td>
+    <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
   </tr>
 	<tr>
     <th>人数</th>
-    <td><%= @reservation.ppl %>円</td>
+    <td><%= @reservation.ppl %>人</td>
+  </tr>
+  <tr>
+    <th>料金（１泊）</th>
+    <td><%= @post.price %>円</td>
+  </tr>
+	<tr>
+    <th>宿泊日数</th>
+    <td><%= @sum = ((@reservation.finish_date - @reservation.start_date)/ 86400).to_int %>日</td>
   </tr>
   <tr>
     <th>合計料金</th>
-    <td><%= @post.price %>円</td>
+    <td><%= ((@post.price * @reservation.ppl)* @sum) %>円</td>
   </tr>
-	
+  <tr>
+    <td>
+      <%= button_to "この予約をキャンセルする", "/posts/#{@post.id}/reservations/#{@reservation.id}", method: :delete, data: { confirm: "本当にキャンセルしますか？" } %>
+    </td>
+  </tr>
 </table>

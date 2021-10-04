@@ -1,31 +1,60 @@
 class ReservationsController < ApplicationController
 	
-	before_action :permit_params, except: :new
+	before_action :reservation_params, only: [:confirm]
+
+  def index
+		@reservations = Reservation.where(user_id: current_user.id)
+	end
 
 	def new
 		@reservation = Reservation.new
+		@post = params[:post_id]
 	end
 
 	def back
-		@reservation = Reservation.new(@attr)
+		@reservation = current_user.reservations.new(reservation_params)
 		render :new
 	end
 
 	def confirm
-		@reservation = Reservation.new(@attr)
+		@reservation = current_user.reservations.new(reservation_params)
+		@post = params[:post_id]
+		@reservation.post_id = @post
 		if @reservation.invalid?
 			render :new
 		end
 	end
 
-	def complete
-		Reservation.create!(@attr)
+	def create
+		@reservation = current_user.reservations.new(reservation_params)
+		@post = params[:post_id]
+		@reservation.post_id = @post
+		if @reservation.save
+      flash[:notice] = "予約が完了しました。"	
+      redirect_to post_reservations_path
+		else
+			render :new
+		end
 	end
+
+  def show
+    @reservation = current_user.reservations.find(params[:id])
+		@post = @reservation.post
+	end
+
+	def destroy
+		@reservation = current_user.reservations.find(params[:id])
+		@post = params[:post_id]
+		@reservation.destroy
+		flash[:notice] = "予約をキャンセルしました"
+		redirect_to post_reservations_path
+	end
+
 
 	private
 
-	def permit_params
-		@attr = params.require('reservation').permit(:id, :start_date, :finish_date, :ppl)
+	def reservation_params
+		params.require(:reservation).permit(:id, :start_date, :finish_date, :ppl, :user_id, :post_id)
 	end
 
 end

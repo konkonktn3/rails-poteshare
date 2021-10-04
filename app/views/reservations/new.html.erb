@@ -2,7 +2,7 @@
 
 <%= render "shared/error", obj: @reservation %>
 
-<%= form_with model:@reservation, method: :post, url: reservations_confirm_path do |f| %>    
+<%= form_with model:@reservation, method: :post, url: post_reservations_confirm_path(@post), local: true do |f| %>    
 	<table>
     <tr>
       <th>チェックイン</th>

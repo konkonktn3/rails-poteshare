@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only:[:edit, :update, :destroy]
+  before_action :logged_in_user, only:[ ]
   skip_before_action :login_required, only:[:search, :show]
 
   def index #ユーザがポストしたものを一覧表示
@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
   
   def create # ポストをDBに登録
-    @post = current_user.posts.new(params.require(:post).permit(:roomname, :introduction, :price, :address, :image))
+    @post = current_user.posts.new(post_params)
     if @post.save
       flash[:notice] = "新しいルームを登録しました"
       redirect_to ("/posts/#{@post.id}")
@@ -21,12 +21,38 @@ class PostsController < ApplicationController
   end
 
   def show # 登録したポストを表示（個人）
-      @post = current_user.posts.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def search
     @q = Post.ransack(params[:q])
     @posts = @q.result
+  end
+
+  def edit
+    @post = current_user.posts.find(params[:id])
+  end
+
+  def update
+    @post = current_user.posts.find(params[:id])
+    if @post.update(post_params)
+      flash[:notice] = "ルーム情報を更新しました"
+      redirect_to @post
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    flash[:notice] = "ルーム登録を削除しました"
+    redirect_to :posts
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:roomname, :introduction, :price, :address, :image)
   end
 
 end

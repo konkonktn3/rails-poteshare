@@ -3,11 +3,11 @@
 <table>
   <tr>
     <th>チェックイン</th>
-    <td><%= @reservation.start_date %></td>
+    <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
   </tr>
   <tr>
     <th>チェックアウト</th>
-    <td><%= @reservation.finish_date %></td>
+    <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
   </tr>
   <tr>
     <th>人数</th>
@@ -16,7 +16,7 @@
 </table>
 
 
-<%= form_with model: @reservation, method: :post, url: reservations_back_path do |form| %>
+<%= form_with model: @reservation, method: :post, url: post_reservations_back_path(@post) do |form| %>
 	<%= form.hidden_field :start_date %>
 	<%= form.hidden_field :finish_date %>
 	<%= form.hidden_field :ppl %>
@@ -27,7 +27,7 @@
   </div>
 <% end %>
 
-<%= form_with model: @reservation, method: :post, url: reservations_complete_path do |form| %>
+<%= form_with model: @reservation, method: :post, url: post_reservations_path, local: true do |form| %>
 	<%= form.hidden_field :start_date %>
 	<%= form.hidden_field :finish_date %>
 	<%= form.hidden_field :ppl %>
@@ -37,4 +37,3 @@
     </ul>
   </div>
 <% end %>
-  

@@ -11,22 +11,19 @@
       <th>ルーム名</th>
       <th>チェックイン</th>
       <th>チェックアウト</th>
-      <th>予約確定日</th>
       <th>詳細</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @posts.each do |post| %>
-      <td><%= post.roomname %></td>
-      <td><%= image_tag post.image.to_s, width: 180 %></td>
-    <% end %>
     <% @reservations.each do |reservation| %>
-      <%= reservation.post_roomname %>
-        <td><%= reservation.start_date %></td>
-        <td><%= reservation.finish_date %></td>
-        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
-        <td><%= link_to "more..", reservation %></td>
+      <tr>
+        <td><%= image_tag reservation.post.image.to_s, width: 200 %></td>
+        <td><%= reservation.post.roomname %></td>
+        <td><%= reservation.start_date.to_s(:datetime_jp) %></td>
+        <td><%= reservation.finish_date.to_s(:datetime_jp) %></td>
+        <td><%= link_to "more..", '/top' %></td>
+      </tr>   
     <% end %>
   </tbody>
 </table>

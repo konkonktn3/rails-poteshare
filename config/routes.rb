@@ -6,13 +6,13 @@ Rails.application.routes.draw do
 
   get '/top' => 'homes#top'
   
-  get 'posts/search'
-  post 'reservations/confirm' 
-  post 'reservations/back'
-  post 'reservations/complete'
-
+  get 'posts/search' => 'posts#search'
+  
   resources :users
   resources :posts do
     resources :reservations
+    post 'reservations/confirm' => 'reservations#confirm'
+    post 'reservations/back' => 'reservations#back'
+    
   end
 end

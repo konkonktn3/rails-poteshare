@@ -8,4 +8,5 @@ class Post < ApplicationRecord
   validates :image, presence: { message: 'をアップロードしてください' }
 
   belongs_to :user
+  has_many :reservations
 end

@@ -15,4 +15,6 @@ class Reservation < ApplicationRecord
   end
   validates :ppl, numericality: {only_integer: true, greater_than: 0, message:"を入力してください"}
 
+  belongs_to :user
+  belongs_to :post
 end
