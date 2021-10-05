@@ -13,6 +13,7 @@ class ReservationsController < ApplicationController
 
 	def back
 		@reservation = current_user.reservations.new(reservation_params)
+		@post = params[:post_id]
 		render :new
 	end
 

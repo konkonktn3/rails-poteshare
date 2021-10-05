@@ -1,4 +1,7 @@
 <body>
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
   <div class="top">
     <div class="container-top">
       <div class="search-box">

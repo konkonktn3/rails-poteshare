@@ -2,6 +2,10 @@
 
 <table>
   <tr>
+    <th>ルーム名</th>
+    <td><%= @reservation.post.roomname %></td>
+  </tr>
+  <tr>
     <th>チェックイン</th>
     <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
   </tr>
@@ -10,8 +14,20 @@
     <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
   </tr>
   <tr>
-    <th>人数</th>
+    <th>宿泊日数</th>
+    <td><%= @sum = ((@reservation.finish_date - @reservation.start_date)/ 86400).to_int %>日</td>
+  </tr>
+  <tr>
+    <th>料金（１泊）</th>
+    <td><%= @reservation.post.price %>円</td>
+  </tr>
+	<tr>
+    <th>人数</th> 
     <td><%= @reservation.ppl %>人</td>
+  </tr>
+  <tr>
+    <th>合計料金</th>
+    <td><%= ((@reservation.post.price * @reservation.ppl)* @sum) %>円</td>
   </tr>
 </table>
 

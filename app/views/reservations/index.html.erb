@@ -22,7 +22,7 @@
         <td><%= reservation.post.roomname %></td>
         <td><%= reservation.start_date.to_s(:datetime_jp) %></td>
         <td><%= reservation.finish_date.to_s(:datetime_jp) %></td>
-        <td><%= link_to "more..", '/top' %></td>
+        <td><%= link_to "more..", post_reservation_path(reservation.post.id,reservation.id) %></td>
       </tr>   
     <% end %>
   </tbody>
