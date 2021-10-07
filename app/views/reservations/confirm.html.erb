@@ -1,55 +1,61 @@
-<h1>予約フォーム</h1>
+<div class="main-box">
+  <div class="reservation-container">
+    <h1>予約フォーム</h1>
 
-<table>
-  <tr>
-    <th>ルーム名</th>
-    <td><%= @reservation.post.roomname %></td>
-  </tr>
-  <tr>
-    <th>チェックイン</th>
-    <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
-  </tr>
-  <tr>
-    <th>チェックアウト</th>
-    <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
-  </tr>
-  <tr>
-    <th>宿泊日数</th>
-    <td><%= @sum = ((@reservation.finish_date - @reservation.start_date)/ 86400).to_int %>日</td>
-  </tr>
-  <tr>
-    <th>料金（１泊）</th>
-    <td><%= @reservation.post.price %>円</td>
-  </tr>
-	<tr>
-    <th>人数</th> 
-    <td><%= @reservation.ppl %>人</td>
-  </tr>
-  <tr>
-    <th>合計料金</th>
-    <td><%= ((@reservation.post.price * @reservation.ppl)* @sum) %>円</td>
-  </tr>
-</table>
+    <table>
+      <tr>
+        <th>ルーム名</th>
+        <td><%= @reservation.post.roomname %></td>
+      </tr>
+      <tr>
+        <th>チェックイン</th>
+        <td><%= @reservation.start_date.to_s(:datetime_jp) %></td>
+      </tr>
+      <tr>
+        <th>チェックアウト</th>
+        <td><%= @reservation.finish_date.to_s(:datetime_jp) %></td>
+      </tr>
+      <tr>
+        <th>宿泊日数</th>
+        <td><%= @sum = ((@reservation.finish_date - @reservation.start_date)/ 86400).to_int %>日</td>
+      </tr>
+      <tr>
+        <th>料金（１泊）</th>
+        <td><%= @reservation.post.price %>円</td>
+      </tr>
+      <tr>
+        <th>人数</th> 
+        <td><%= @reservation.ppl %>人</td>
+      </tr>
+      <tr>
+        <th>合計料金</th>
+        <td><%= ((@reservation.post.price * @reservation.ppl)* @sum) %>円</td>
+      </tr>
+    </table>
 
+    <div class="buttons">
+    <%= form_with model: @reservation, method: :post, url: post_reservations_back_path(@post), local: true, :class => "button-back" do |form| %>
+      <%= form.hidden_field :start_date %>
+      <%= form.hidden_field :finish_date %>
+      <%= form.hidden_field :ppl %>
+      <div>
+        <ul>
+          <%= form.submit '入力画面に戻る', :class => "btn-back" %>
+        </ul>
+      </div>
+    <% end %>
 
-<%= form_with model: @reservation, method: :post, url: post_reservations_back_path(@post) do |form| %>
-	<%= form.hidden_field :start_date %>
-	<%= form.hidden_field :finish_date %>
-	<%= form.hidden_field :ppl %>
-  <div>
-    <ul>
-      <%= form.submit '入力画面に戻る' %>
-    </ul>
+    <%= form_with model: @reservation, method: :post, url: post_reservations_path, local: true, :class => "button-reservation" do |form| %>
+      <%= form.hidden_field :start_date %>
+      <%= form.hidden_field :finish_date %>
+      <%= form.hidden_field :ppl %>
+      <div>
+        <ul>
+          <%= form.submit '予約を確定する', :class => "btn-confirm" %>
+        </ul>
+      </div>
+    <% end %>
+    </div>
+
   </div>
-<% end %>
-
-<%= form_with model: @reservation, method: :post, url: post_reservations_path, local: true do |form| %>
-	<%= form.hidden_field :start_date %>
-	<%= form.hidden_field :finish_date %>
-	<%= form.hidden_field :ppl %>
-  <div>
-    <ul>
-      <%= form.submit '予約を確定する' %>
-    </ul>
-  </div>
-<% end %>
+</div>

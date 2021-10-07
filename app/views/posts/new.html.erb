@@ -1,38 +1,41 @@
+<div class="main-box">
+  <div class="post-container">
+    <h1>ルーム登録</h1>
+    <p>※全て必須になります。</p>
+    <%= render "shared/error", obj: @post %>
 
-<h1>ルーム登録</h1>
-<p>全て登録に必須の情報です。</p>
-<%= render "shared/error", obj: @post %>
+    <%= form_with model: @post, local: true do |f| %>
+      <table class="box">
+        <tr>
+          <th><%= f.label :roomname ,"ルーム名" %></th>
+          <td><%= f.text_field :roomname, size: "31x10", :placeholder => "ルーム名を入力" %></td>
+        </tr>
 
-  <%= form_with model: @post, local: true do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :roomname ,"ルーム名" %></th>
-      <td><%= f.text_field :roomname, size: "31x10" %></td>
-    </tr>
+        <tr>
+          <th><%= f.label :introduction ,"ルーム紹介" %></th>
+          <td><%= f.text_area :introduction, size: "30x10", :placeholder => "ルームの説明を入力" %></td>
+        </tr>
 
-    <tr>
-      <th><%= f.label :introduction ,"ルーム紹介" %></th>
-      <td><%= f.text_area :introduction, size: "30x10" %></td>
-    </tr>
+        <tr>
+          <th><%= f.label :price ,"料金" %></th>
+          <td><%= f.text_field :price, size: "31x10", :placeholder => "１人/1泊の料金を入力" %></td>
+        </tr>
 
-    <tr>
-      <th><%= f.label :price ,"料金（１泊）" %></th>
-      <td><%= f.text_field :price, size: "31x10" %></td>
-    </tr>
+        <tr>
+          <th><%= f.label :address ,"住所" %></th>
+          <td><%= f.text_field :address, size: "31x10", :placeholder => "県名から住所を入力" %></td>
+        </tr>
 
-    <tr>
-      <th><%= f.label :address ,"住所" %></th>
-      <td><%= f.text_field :address, size: "31x10" %></td>
-    </tr>
-
-    <tr>
-      <th><%= f.label :image, 'ルーム画像' %></th>
-      <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
-    </tr>
-  </table>  
-    <tr>
-      <%= f.submit "登録する"%>
-    </tr>
-    
-  <% end %>
-</body>
+        <tr>
+          <th><%= f.label :image, 'ルーム画像' %></th>
+          <td><%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %></td>
+        </tr>
+      </table>  
+      <div class="button">
+        <tr>
+          <%= f.submit "登録する", :class => "btn" %>
+        </tr>
+      </div>
+    <% end %>
+  </div>
+</div>

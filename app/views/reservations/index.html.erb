@@ -1,30 +1,33 @@
-<h1>予約一覧</h1>
+<div class="main-box">
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
 
-<% if flash[:notice] %>
-  <p class="notice"><%= flash[:notice] %></p>
-<% end %>
+  <div class="reservation-index-container">
+    <h1>予約一覧</h1>
+    
+    <table>
+      <thead>
+        <tr>
+          <th class="room-img">ルーム画像</th>
+          <th class="roomname">ルーム名</th>
+          <th class="date">チェック<br>イン</th>
+          <th class="date">チェック<br>アウト</th>
+          <th>予約<br>詳細</th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-    　<th>ルーム画像</th>
-      <th>ルーム名</th>
-      <th>チェックイン</th>
-      <th>チェックアウト</th>
-      <th>詳細</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @reservations.each do |reservation| %>
-      <tr>
-        <td><%= image_tag reservation.post.image.to_s, width: 200 %></td>
-        <td><%= reservation.post.roomname %></td>
-        <td><%= reservation.start_date.to_s(:datetime_jp) %></td>
-        <td><%= reservation.finish_date.to_s(:datetime_jp) %></td>
-        <td><%= link_to "more..", post_reservation_path(reservation.post.id,reservation.id) %></td>
-      </tr>   
-    <% end %>
-  </tbody>
-</table>
-<p><%= link_to "ホームに戻る", '/top' %></p>
+      <tbody>
+        <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= image_tag reservation.post.image.to_s, size: '220x150' %></td>
+            <td><%= reservation.post.roomname %></td>
+            <td><%= reservation.start_date.to_s(:datetime_jp) %></td>
+            <td><%= reservation.finish_date.to_s(:datetime_jp) %></td>
+            <td><%= link_to "more..", post_reservation_path(reservation.post.id,reservation.id) %></td>
+          </tr>   
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

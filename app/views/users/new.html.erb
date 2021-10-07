@@ -1,32 +1,35 @@
-<div class="signin-container">
-  <h2>アカウント作成</h2>
-  <p>必要な情報を入力してください。<br> ※全て必須になります。</p>
-
-  <%= render "shared/error", obj: @user %>
-
-  <%= form_with model: @user, local: true do |f| %>
-    <div class="box">
-      <tr>
-        <%= f.label :name ,"名前" %><br>
-        <%= f.text_field :name %>
-      </tr><br>
-      <tr>
-        <%= f.label :email ,"メールアドレス" %><br>
-        <%= f.text_field :email %>
-      </tr><br>
-      <tr>
-        <%= f.label :password ,"パスワード" %><br>
-        <%= f.password_field :password %>
-      </tr><br>
-      <tr>
-        <%= f.label :password_confirmation, "パスワード（確認用）" %><br>
-        <%= f.password_field :password_confirmation %>
-      </tr>
-      
-      <div class="button">
-        <%= f.submit "アカウントを作る"%><br>
-        <%= link_to "既にアカウントをお持ちの方", '/login' %>
-      </div>
+<div class="main-box"> 
+  <div class="signin">
+    <%= render "shared/error", obj: @user %>
+    <div class="signin-container">
+      <h2>アカウント作成</h2>
+      <p>必要な情報を入力してください。<br> ※全て必須になります。</p>
+      <div class="box">
+        <%= form_with model: @user, local: true do |f| %>
+          <div class="inputs">
+            <tr>
+              <%= f.label :name ,"名前" %><br>
+              <%= f.text_field :name %>
+            </tr><br>
+            <tr>
+              <%= f.label :email ,"メールアドレス" %><br>
+              <%= f.text_field :email %>
+            </tr><br>
+            <tr>
+              <%= f.label :password ,"パスワード" %><br>
+              <%= f.password_field :password %>
+            </tr><br>
+            <tr>
+              <%= f.label :password_confirmation, "パスワード（確認用）" %><br>
+              <%= f.password_field :password_confirmation %>
+            </tr>
+          </div>
+          <div class="button-top">
+            <%= f.submit "アカウントを作る", :class => "btn" %><br>
+            <%= link_to "既にアカウントをお持ちの方", '/login' %>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>

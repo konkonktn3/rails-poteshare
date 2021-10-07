@@ -1,23 +1,24 @@
 <body>
-  <% if flash[:notice] %>
-    <p class="notice"><%= flash[:notice] %></p>
-  <% end %>
   <div class="top">
     <div class="container-top">
-      <div class="search-box">
-        <h2>まだ体験したことのない旅をしよう</h2>
-        <%= search_form_for @q, url: '/posts/search' do |f| %>
-          <div class="area">
-            <%= f.label :address, "エリア" %>
-            <%= f.search_field :address_cont %></br>
-          </div>
-          <div class="freeword">
-            <%= f.label :roomname_or_introduction_or_price_or_address_gt, "フリーワード" %>
-            <%= f.search_field :roomname_or_introduction_or_price_or_address_cont %></br>
-          </div>
-          <div class="btn"><%= f.submit '検索' %></div>
-        <% end %>
-        </p>
+      <div class="search">
+        <div class="search-box">
+          <h2 class="main-sentence">Wherever you want to go..</h2>
+          <p>Where would you like to travel?</p>
+          <%= search_form_for @q, url: '/posts/search' do |f| %>
+            <div class="area">
+              <%= f.label :address, "Area...✈︎" %>
+              <%= f.search_field :address_cont %></br>
+            </div>
+            <div class="freeword">
+              <%= f.label :roomname_or_introduction_or_price_or_address_gt, "Keyword...✈︎" %>
+              <%= f.search_field :roomname_or_introduction_or_price_or_address_cont %></br>
+            </div>
+            <div class="button-top">
+              <%= f.submit 'S E A R C H', :class => "top-btn" %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   
