@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-	
 	before_action :reservation_params, only: [:confirm]
 
   def index

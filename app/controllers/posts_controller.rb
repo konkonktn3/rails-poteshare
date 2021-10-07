@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  before_action :logged_in_user, only:[ ]
   skip_before_action :login_required, only:[:search, :show]
 
   def index #ユーザがポストしたものを一覧表示
