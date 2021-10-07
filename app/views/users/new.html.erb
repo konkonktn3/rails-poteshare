@@ -1,9 +1,11 @@
 <div class="main-box"> 
   <div class="signin">
     <%= render "shared/error", obj: @user %>
+
     <div class="signin-container">
       <h2>アカウント作成</h2>
       <p>必要な情報を入力してください。<br> ※全て必須になります。</p>
+
       <div class="box">
         <%= form_with model: @user, local: true do |f| %>
           <div class="inputs">
@@ -24,12 +26,14 @@
               <%= f.password_field :password_confirmation %>
             </tr>
           </div>
+          
           <div class="button-top">
             <%= f.submit "アカウントを作る", :class => "btn" %><br>
             <%= link_to "既にアカウントをお持ちの方", '/login' %>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+
     </div>
   </div>
 </div>

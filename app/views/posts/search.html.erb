@@ -2,20 +2,22 @@
   <div class="result-container">
     <h1>検索結果</h1>
     <div class="result-box">
-    <table>
-      <tbody>
-        <% @posts.each do |post| %>
-          <div class="result">
-            <div class="inside">
-              <%= image_tag post.image_url, size: '300x200' %><br>
-              <%= link_to post, method: :get do %> 
-                ルーム名：<%= post.roomname %><br>住所：<%= post.address %>
-              <% end %> 
+
+      <table>
+        <tbody>
+          <% @posts.each do |post| %>
+            <div class="result">
+              <div class="inside">
+                <%= image_tag post.image_url, size: '300x200' %><br>
+                <%= link_to post, method: :get do %> 
+                  ルーム名：<%= post.roomname %><br>住所：<%= post.address %>
+                <% end %> 
+              </div>
             </div>
-          </div>
-        <% end %>
-      </tbody>
-    </table>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
   </div>
 </div>

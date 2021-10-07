@@ -34,27 +34,27 @@
     </table>
 
     <div class="buttons">
-    <%= form_with model: @reservation, method: :post, url: post_reservations_back_path(@post), local: true, :class => "button-back" do |form| %>
-      <%= form.hidden_field :start_date %>
-      <%= form.hidden_field :finish_date %>
-      <%= form.hidden_field :ppl %>
-      <div>
-        <ul>
-          <%= form.submit '入力画面に戻る', :class => "btn-back" %>
-        </ul>
-      </div>
-    <% end %>
+      <%= form_with model: @reservation, method: :post, url: post_reservations_back_path(@post), local: true, :class => "button-back" do |form| %>
+        <%= form.hidden_field :start_date %>
+        <%= form.hidden_field :finish_date %>
+        <%= form.hidden_field :ppl %>
+        <div>
+          <ul>
+            <%= form.submit '入力画面に戻る', :class => "btn-back" %>
+          </ul>
+        </div>
+      <% end %>
 
-    <%= form_with model: @reservation, method: :post, url: post_reservations_path, local: true, :class => "button-reservation" do |form| %>
-      <%= form.hidden_field :start_date %>
-      <%= form.hidden_field :finish_date %>
-      <%= form.hidden_field :ppl %>
-      <div>
-        <ul>
-          <%= form.submit '予約を確定する', :class => "btn-confirm" %>
-        </ul>
-      </div>
-    <% end %>
+      <%= form_with model: @reservation, method: :post, url: post_reservations_path, local: true, :class => "button-reservation" do |form| %>
+        <%= form.hidden_field :start_date %>
+        <%= form.hidden_field :finish_date %>
+        <%= form.hidden_field :ppl %>
+        <div>
+          <ul>
+            <%= form.submit '予約を確定する', :class => "btn-confirm" %>
+          </ul>
+        </div>
+      <% end %>
     </div>
 
   </div>
