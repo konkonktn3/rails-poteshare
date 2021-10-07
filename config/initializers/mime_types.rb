@@ -2,3 +2,6 @@
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
+if defined?(Rack::MiniProfiler)
+  Rack::MiniProfiler.config.auto_inject = false
+end

@@ -1,0 +1,51 @@
+<div class="main-box">
+  <div class="user-container">
+    <h1>アカウント編集</h1>
+
+    <%= render "shared/error", obj: @user %>
+
+    <%= form_with model: @user do |f| %>
+      <table class="box">
+        <div class="inputs">
+          <tr>
+            <th><%= f.label :image ,"プロフィール画像" %></th>
+            <td>
+              <% if @user.image? %>
+                <%= image_tag @user.image.thumb.url, size: '150x150', :class => "account-img" %>
+              <% else %>
+                <%= image_tag "/assets/initialimage.jpg", size: '150x150', :class => "account-img" %>
+              <% end %>
+                <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
+            </td>
+          </tr>
+          <tr>
+            <th><%= f.label :name ,"名前" %></th>
+            <td><%= f.text_field :name, size: "40x10" %></td>
+          </tr>
+          <tr>
+            <th class="email"><%= f.label :email ,"メールアドレス" %></th>
+            <td><%= f.text_field :email, size: "40x10" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password ,"新しいパスワード" %></th>
+            <td><%= f.password_field :password, size: "40x10" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password_confirmation, "新しいパスワード （確認用）" %></th>
+            <td><%= f.password_field :password_confirmation, size: "40x10" %></td>
+          </tr>
+          <tr>
+            <th><%= f.label :password ,"現在のパスワード" %></th>
+            <td><%= f.password_field :password, size: "40x10" %></td>
+          </tr>
+        </div>
+      </table>
+      
+      <div class="button">
+        <ul>
+          <li><%= f.submit "更新する", :class => "btn" %></li>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</div>

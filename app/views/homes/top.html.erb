@@ -1,0 +1,53 @@
+<body>
+  <div class="top">
+    <div class="container-top">
+      <div class="search">
+        <div class="search-box">
+          <h2 class="main-sentence">Wherever you want to go..</h2>
+          <p>Where would you like to travel?</p>
+          <%= search_form_for @q, url: '/posts/search' do |f| %>
+            <div class="area">
+              <%= f.label :address, "Area...✈︎" %>
+              <%= f.search_field :address_cont %></br>
+            </div>
+            <div class="freeword">
+              <%= f.label :roomname_or_introduction_or_price_or_address_gt, "Keyword...✈︎" %>
+              <%= f.search_field :roomname_or_introduction_or_price_or_address_cont %></br>
+            </div>
+            <div class="button-top">
+              <%= f.submit 'S E A R C H', :class => "top-btn" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="recommendations">
+      <h1>おすすめエリア</h1>
+      <div class="item-box">
+        <span>Tokyo</span>
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E6%9D%B1%E4%BA%AC&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
+        <img src="/assets/img_tokyo.jpg", class="panel-image">
+        </a>
+      </div>
+      <div class="item-box">
+        <span>Osaka</span>
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E5%A4%A7%E9%98%AA&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
+        <img src="/assets/img_osaka.jpg", class="panel-image">
+        </a>
+      </div>
+      <div class="item-box">
+        <span>Kyoto</span>
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E4%BA%AC%E9%83%BD%E5%BA%9C&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
+        <img src="/assets/img_kyoto.jpg", class="panel-image">
+        </a>
+      </div>
+      <div class="item-box">
+        <span style="font-size : 40px">Sapporo</span>
+        <a href="http://localhost:3000/posts/search?q%5Baddress_cont%5D=%E6%9C%AD%E5%B9%8C&q%5Broomname_or_introduction_or_price_or_address_cont%5D=&commit=%E6%A4%9C%E7%B4%A2">
+        <img src="/assets/img_sapporo.jpg", class="panel-image">
+        </a>
+      </div>
+    </div>
+  </div>
+</body>

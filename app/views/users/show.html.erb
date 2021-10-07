@@ -1,0 +1,35 @@
+<div class="main-box">
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+  
+  <div class="user-container">
+    <h1>アカウント詳細</h1>
+    <div class="user-show-box">
+      <div class="account-image">
+        <% if @user.image? %>
+          <%= image_tag @user.image.thumb.url, size: '150x150', :class => "account-img" %>
+        <% else %>
+          <%= image_tag "/assets/initialimage.jpg", size: '150x150', :class => "account-img" %>
+        <% end %>
+      </div>
+      <table>
+        <tr>
+          <th>名前</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
+    
+    <div>
+      <ul class="user-show">
+        <li><%= link_to "情報を編集する", "/users/#{@user.id}/edit" %></li>
+      </ul>
+    </div>
+    
+  </div>
+</div> 

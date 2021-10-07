@@ -1,3 +1,18 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/top' => 'homes#top'
+  
+  get 'posts/search' => 'posts#search'
+  
+  resources :users
+  resources :posts do
+    resources :reservations
+    post 'reservations/confirm' => 'reservations#confirm'
+    post 'reservations/back' => 'reservations#back'
+    
+  end
 end

@@ -1,0 +1,30 @@
+<div class="main-box">
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+
+  <div class="login-container">
+    <h2>ログイン</h2>
+    <p>登録情報を入力してください。</p>
+    
+    <div class="box">
+      <%= form_with scope: :session, url: login_path, local: true do |f| %>
+        <div class="inputs">
+          <tr>
+            <%= f.label :email, "メールアドレス" %><br>
+            <%= f.email_field :email %>
+          </tr><br>
+          <tr>
+            <%= f.label :password, "パスワード" %><br>
+            <%= f.password_field :password %>
+          </tr>
+        </div>
+        <div class="button-top">
+          <%= f.submit "ログイン", :class => "btn" %><br>
+          <%= link_to "アカウントをお持ちでない方", '/users/new' %>
+        </div>
+      <% end %>
+    </div> 
+
+  </div>
+</div>

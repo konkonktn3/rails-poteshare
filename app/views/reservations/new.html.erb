@@ -1,0 +1,32 @@
+<div class="main-box">
+  <div class="reservation-container">
+    <h1>予約フォーム</h1>
+
+    <%= render "shared/error", obj: @reservation %>
+
+    <%= form_with model:@reservation, method: :post, url: post_reservations_confirm_path(@post), local: true do |f| %>    
+      <table class="box">
+        <tr>
+          <th>チェックイン</th>
+          <td><%= f.date_select :start_date, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <th>チェックアウト</th>
+          <td><%= f.date_select :finish_date, class: 'form-control' %></td>
+        </tr>
+        <tr>
+          <th>人数</th>
+          <td><%= f.text_field :ppl %></td>
+        </tr>
+      </table>
+      
+      <div class="button">
+        <ul>
+          <%= f.submit '確認画面へ', :class => "btn" %>
+        </ul>
+      </div>
+    <% end %>
+    
+  </div>
+</div>
+

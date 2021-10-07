@@ -1,0 +1,19 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       name: 名前
+       email: メールアドレス
+       password: パスワード
+       password_confirmation: パスワード（確認）
+       image: アイコン画像
+     post:
+       roomname: ルーム名
+       image: ルーム画像
+       introduction: ルーム紹介
+       address: 住所
+       price: 料金
+     reservation: 
+       start_date: チェックイン
+       finish_date: チェックアウト
+       ppl: 人数
