@@ -37,7 +37,7 @@
         <td><%= @reservation.created_at.to_s(:datetime_jp) %></td>
       </tr>
     </table> 
-    <div class="button">
+    <div class="C-button">
       <tr>
         <%= button_to "この予約をキャンセルする", "/posts/#{@post.id}/reservations/#{@reservation.id}", method: :delete, :class => "btn" %>
       </tr>

@@ -17,11 +17,11 @@ class UsersController < ApplicationController
   end
 
   def show #個人ユーザー情報
-    @user = User.find(params[:id])
+    @user = User.find_by(id:session[:user_id])
   end
 
   def edit #個人ユーザー情報の編集
-    @user = User.find(params[:id])
+    @user = User.find_by(id:session[:user_id])
   end
 
   def update #個人ユーザー情報の更新
